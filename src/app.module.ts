@@ -20,7 +20,9 @@ import { City } from './cities/entities/city.entity';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [City],
+        // entities: [City],
+        // entities: ['src/entity/**/*.ts'],
+        entities: [process.cwd(), 'dist/**/*.entity.js'],
         // Do not use synchronize: true in real projects
         synchronize: true,
       }),

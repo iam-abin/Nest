@@ -17,11 +17,15 @@ export class CitiesService {
   }
 
   async findAll() {
-    return await this.citiesRepository.find();
+    const city = await this.citiesRepository.find();
+    if (!city) throw new NotFoundException('Cities are not available');
+    return city;
   }
 
   async findOne(id: number) {
-    return await this.citiesRepository.findOne({ where: { id } });
+    const city = await this.citiesRepository.findOne({ where: { id } });
+    if (!city) throw new NotFoundException('City not found');
+    return city;
   }
 
   async update(id: number, updateCityDto: UpdateCityDto) {
